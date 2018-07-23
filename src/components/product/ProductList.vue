@@ -4,7 +4,11 @@
       <i class="fa fa-2x fa-user-circle"></i>
     </div>
     <div class="product-list">
-      <div class="product-list--item">
+      <div 
+      v-for="productItem in productItems"
+      :key="productItem.id"
+      class="product-list--item">
+      <ProductListItem :productItem="productItem"/>
         <div>
           <h2 class="has-text-weight-bold">The Fullstack Hoodie
             <span class="tag 
@@ -29,8 +33,20 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import ProductListItem from './productListItem';
+
 export default {
   name: 'ProductList',
+  computed: {
+    ...mapGetters(['productItems'])
+  },
+  created() {
+    this.$store.dispatch('updateProductItems');
+  },
+  components: {
+    ProductListItem
+  }
 }
 </script>
 
