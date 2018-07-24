@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 const state = {
-    productItem: []
+    productItems: []
 };
 const mutations = {
     UPDATE_PRODUCT_ITEMS (state, payload) {
-        state.productItem = payload;
+        state.productItems = payload;
     }
 };
 const actions = {
